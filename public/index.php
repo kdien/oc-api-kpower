@@ -11,6 +11,11 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// Custom autoloader for DB classes
+spl_autoload_register( function ($class) {
+    require_once "../classes/" . $class . ".php";
+});
+
 session_start();
 
 // Instantiate the app
