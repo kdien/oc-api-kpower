@@ -13,6 +13,19 @@ $app->group('/api', function() {
         return $response->withJson($result);
     });
 
+    $this->get('/articlescategory/{id}', function (Request $request, Response $response, array $args) {
+        $id = $args['id'];
+        $db = new DbHandler();
+        $result = $db->getArticlesByCategory($id);
+        return $response->withJson($result);
+    });
+
+    $this->get('/article/{id}', function (Request $request, Response $response, array $args) {
+        $id = $args['id'];
+        $db = new DbHandler();
+        $result = $db->getArticle($id);
+        return $response->withJson($result);
+    });
 });
 
 // Routes
